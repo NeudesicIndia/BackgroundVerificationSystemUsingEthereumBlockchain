@@ -1,0 +1,983 @@
+{
+  "contractName": "EmployeeBGHistory",
+  "abi": [
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "employees",
+      "outputs": [
+        {
+          "name": "id",
+          "type": "bytes1"
+        },
+        {
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "name": "age",
+          "type": "uint256"
+        },
+        {
+          "name": "communicationAddress",
+          "type": "string"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "test",
+      "outputs": [
+        {
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "pure",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "_name",
+          "type": "string"
+        }
+      ],
+      "name": "getEmployeeHistory",
+      "outputs": [
+        {
+          "components": [
+            {
+              "name": "id",
+              "type": "bytes1"
+            },
+            {
+              "name": "name",
+              "type": "string"
+            },
+            {
+              "name": "age",
+              "type": "uint256"
+            },
+            {
+              "name": "communicationAddress",
+              "type": "string"
+            }
+          ],
+          "name": "",
+          "type": "tuple"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "pure",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x608060405234801561001057600080fd5b5061076e806100206000396000f300608060405260043610610057576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806309f30ace1461005c5780634739326b14610099578063f8a8fd6d146100d9575b600080fd5b34801561006857600080fd5b50610083600480360361007e919081019061043d565b610104565b6040516100909190610610565b60405180910390f35b3480156100a557600080fd5b506100c060048036036100bb919081019061047e565b6101b0565b6040516100d0949392919061059b565b60405180910390f35b3480156100e557600080fd5b506100ee61034b565b6040516100fb91906105ee565b60405180910390f35b61010c610388565b60806040519081016040528060017f0100000000000000000000000000000000000000000000000000000000000000027effffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff19168152602001838152602001600c81526020016040805190810160405280600c81526020017f736f6d65206164647265737300000000000000000000000000000000000000008152508152509050919050565b6000818154811015156101bf57fe5b90600052602060002090600402016000915090508060000160009054906101000a90047f01000000000000000000000000000000000000000000000000000000000000000290806001018054600181600116156101000203166002900480601f01602080910402602001604051908101604052809291908181526020018280546001816001161561010002031660029004801561029d5780601f106102725761010080835404028352916020019161029d565b820191906000526020600020905b81548152906001019060200180831161028057829003601f168201915b505050505090806002015490806003018054600181600116156101000203166002900480601f0160208091040260200160405190810160405280929190818152602001828054600181600116156101000203166002900480156103415780601f1061031657610100808354040283529160200191610341565b820191906000526020600020905b81548152906001019060200180831161032457829003601f168201915b5050505050905084565b60606040805190810160405280600681526020017f666f6f6261720000000000000000000000000000000000000000000000000000815250905090565b60806040519081016040528060007effffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff191681526020016060815260200160008152602001606081525090565b600082601f83011215156103e657600080fd5b81356103f96103f48261065f565b610632565b9150808252602083016020830185838301111561041557600080fd5b6104208382846106e1565b50505092915050565b600061043582356106d7565b905092915050565b60006020828403121561044f57600080fd5b600082013567ffffffffffffffff81111561046957600080fd5b610475848285016103d3565b91505092915050565b60006020828403121561049057600080fd5b600061049e84828501610429565b91505092915050565b6104b0816106a1565b82525050565b60006104c182610696565b8084526104d58160208601602086016106f0565b6104de81610723565b602085010191505092915050565b60006104f78261068b565b80845261050b8160208601602086016106f0565b61051481610723565b602085010191505092915050565b600060808301600083015161053a60008601826104a7565b506020830151848203602086015261055282826104ec565b9150506040830151610567604086018261058c565b506060830151848203606086015261057f82826104ec565b9150508091505092915050565b610595816106cd565b82525050565b60006080820190506105b060008301876104a7565b81810360208301526105c281866104ec565b90506105d1604083018561058c565b81810360608301526105e381846104ec565b905095945050505050565b6000602082019050818103600083015261060881846104b6565b905092915050565b6000602082019050818103600083015261062a8184610522565b905092915050565b6000604051905081810181811067ffffffffffffffff8211171561065557600080fd5b8060405250919050565b600067ffffffffffffffff82111561067657600080fd5b601f19601f8301169050602081019050919050565b600081519050919050565b600081519050919050565b60007fff0000000000000000000000000000000000000000000000000000000000000082169050919050565b6000819050919050565b6000819050919050565b82818337600083830152505050565b60005b8381101561070e5780820151818401526020810190506106f3565b8381111561071d576000848401525b50505050565b6000601f19601f83011690509190505600a265627a7a72305820d097825aeb42b23ce62c5ebead51366ca88e1ae09700c1b8e7ee920ab19e9c0c6c6578706572696d656e74616cf50037",
+  "deployedBytecode": "0x608060405260043610610057576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806309f30ace1461005c5780634739326b14610099578063f8a8fd6d146100d9575b600080fd5b34801561006857600080fd5b50610083600480360361007e919081019061043d565b610104565b6040516100909190610610565b60405180910390f35b3480156100a557600080fd5b506100c060048036036100bb919081019061047e565b6101b0565b6040516100d0949392919061059b565b60405180910390f35b3480156100e557600080fd5b506100ee61034b565b6040516100fb91906105ee565b60405180910390f35b61010c610388565b60806040519081016040528060017f0100000000000000000000000000000000000000000000000000000000000000027effffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff19168152602001838152602001600c81526020016040805190810160405280600c81526020017f736f6d65206164647265737300000000000000000000000000000000000000008152508152509050919050565b6000818154811015156101bf57fe5b90600052602060002090600402016000915090508060000160009054906101000a90047f01000000000000000000000000000000000000000000000000000000000000000290806001018054600181600116156101000203166002900480601f01602080910402602001604051908101604052809291908181526020018280546001816001161561010002031660029004801561029d5780601f106102725761010080835404028352916020019161029d565b820191906000526020600020905b81548152906001019060200180831161028057829003601f168201915b505050505090806002015490806003018054600181600116156101000203166002900480601f0160208091040260200160405190810160405280929190818152602001828054600181600116156101000203166002900480156103415780601f1061031657610100808354040283529160200191610341565b820191906000526020600020905b81548152906001019060200180831161032457829003601f168201915b5050505050905084565b60606040805190810160405280600681526020017f666f6f6261720000000000000000000000000000000000000000000000000000815250905090565b60806040519081016040528060007effffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff191681526020016060815260200160008152602001606081525090565b600082601f83011215156103e657600080fd5b81356103f96103f48261065f565b610632565b9150808252602083016020830185838301111561041557600080fd5b6104208382846106e1565b50505092915050565b600061043582356106d7565b905092915050565b60006020828403121561044f57600080fd5b600082013567ffffffffffffffff81111561046957600080fd5b610475848285016103d3565b91505092915050565b60006020828403121561049057600080fd5b600061049e84828501610429565b91505092915050565b6104b0816106a1565b82525050565b60006104c182610696565b8084526104d58160208601602086016106f0565b6104de81610723565b602085010191505092915050565b60006104f78261068b565b80845261050b8160208601602086016106f0565b61051481610723565b602085010191505092915050565b600060808301600083015161053a60008601826104a7565b506020830151848203602086015261055282826104ec565b9150506040830151610567604086018261058c565b506060830151848203606086015261057f82826104ec565b9150508091505092915050565b610595816106cd565b82525050565b60006080820190506105b060008301876104a7565b81810360208301526105c281866104ec565b90506105d1604083018561058c565b81810360608301526105e381846104ec565b905095945050505050565b6000602082019050818103600083015261060881846104b6565b905092915050565b6000602082019050818103600083015261062a8184610522565b905092915050565b6000604051905081810181811067ffffffffffffffff8211171561065557600080fd5b8060405250919050565b600067ffffffffffffffff82111561067657600080fd5b601f19601f8301169050602081019050919050565b600081519050919050565b600081519050919050565b60007fff0000000000000000000000000000000000000000000000000000000000000082169050919050565b6000819050919050565b6000819050919050565b82818337600083830152505050565b60005b8381101561070e5780820151818401526020810190506106f3565b8381111561071d576000848401525b50505050565b6000601f19601f83011690509190505600a265627a7a72305820d097825aeb42b23ce62c5ebead51366ca88e1ae09700c1b8e7ee920ab19e9c0c6c6578706572696d656e74616cf50037",
+  "sourceMap": "86:490:1:-;;;119:37;8:9:-1;5:2;;;30:1;27;20:12;5:2;119:37:1;86:490;;;;;;",
+  "deployedSourceMap": "86:490:1:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;364:210;;8:9:-1;5:2;;;30:1;27;20:12;5:2;364:210:1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;226:45;;8:9:-1;5:2;;;30:1;27;20:12;5:2;226:45:1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;278:80;;8:9:-1;5:2;;;30:1;27;20:12;5:2;278:80:1;;;;;;;;;;;;;;;;;;;;364:210;427:26;;:::i;:::-;472:95;;;;;;;;;517:1;472:95;;;;;;;;;506:5;472:95;;;;525:2;472:95;;;;;;;;;;;;;;;;;;;;;;;;;465:102;;364:210;;;:::o;226:45::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o;278:80::-;315:6;336:15;;;;;;;;;;;;;;;;;;;;278:80;:::o;86:490::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o;6:442:-1:-;;108:3;101:4;93:6;89:17;85:27;78:35;75:2;;;126:1;123;116:12;75:2;163:6;150:20;185:65;200:49;242:6;200:49;;;185:65;;;176:74;;270:6;263:5;256:21;306:4;298:6;294:17;339:4;332:5;328:16;374:3;365:6;360:3;356:16;353:25;350:2;;;391:1;388;381:12;350:2;401:41;435:6;430:3;425;401:41;;;68:380;;;;;;;;456:118;;523:46;561:6;548:20;523:46;;;514:55;;508:66;;;;;581:347;;695:2;683:9;674:7;670:23;666:32;663:2;;;711:1;708;701:12;663:2;774:1;763:9;759:17;746:31;797:18;789:6;786:30;783:2;;;829:1;826;819:12;783:2;849:63;904:7;895:6;884:9;880:22;849:63;;;839:73;;725:193;657:271;;;;;935:241;;1039:2;1027:9;1018:7;1014:23;1010:32;1007:2;;;1055:1;1052;1045:12;1007:2;1090:1;1107:53;1152:7;1143:6;1132:9;1128:22;1107:53;;;1097:63;;1069:97;1001:175;;;;;1183:107;1254:30;1278:5;1254:30;;;1249:3;1242:43;1236:54;;;1297:300;;1399:39;1432:5;1399:39;;;1455:6;1450:3;1443:19;1467:63;1523:6;1516:4;1511:3;1507:14;1500:4;1493:5;1489:16;1467:63;;;1562:29;1584:6;1562:29;;;1555:4;1550:3;1546:14;1542:50;1535:57;;1379:218;;;;;;1604:292;;1702:35;1731:5;1702:35;;;1754:6;1749:3;1742:19;1766:63;1822:6;1815:4;1810:3;1806:14;1799:4;1792:5;1788:16;1766:63;;;1861:29;1883:6;1861:29;;;1854:4;1849:3;1845:14;1841:50;1834:57;;1682:214;;;;;;1980:974;;2119:4;2114:3;2110:14;2203:3;2196:5;2192:15;2186:22;2220:59;2274:3;2269;2265:13;2252:11;2220:59;;;2139:152;2367:4;2360:5;2356:16;2350:23;2418:3;2412:4;2408:14;2401:4;2396:3;2392:14;2385:38;2438:68;2501:4;2488:11;2438:68;;;2430:76;;2301:217;2593:4;2586:5;2582:16;2576:23;2611:62;2667:4;2662:3;2658:14;2645:11;2611:62;;;2528:157;2777:4;2770:5;2766:16;2760:23;2828:3;2822:4;2818:14;2811:4;2806:3;2802:14;2795:38;2848:68;2911:4;2898:11;2848:68;;;2840:76;;2695:233;2945:4;2938:11;;2092:862;;;;;;2961:110;3034:31;3059:5;3034:31;;;3029:3;3022:44;3016:55;;;3078:653;;3300:3;3289:9;3285:19;3277:27;;3315:59;3371:1;3360:9;3356:17;3347:6;3315:59;;;3422:9;3416:4;3412:20;3407:2;3396:9;3392:18;3385:48;3447:64;3506:4;3497:6;3447:64;;;3439:72;;3522:62;3580:2;3569:9;3565:18;3556:6;3522:62;;;3632:9;3626:4;3622:20;3617:2;3606:9;3602:18;3595:48;3657:64;3716:4;3707:6;3657:64;;;3649:72;;3271:460;;;;;;;;3738:281;;3866:2;3855:9;3851:18;3843:26;;3916:9;3910:4;3906:20;3902:1;3891:9;3887:17;3880:47;3941:68;4004:4;3995:6;3941:68;;;3933:76;;3837:182;;;;;4026:337;;4182:2;4171:9;4167:18;4159:26;;4232:9;4226:4;4222:20;4218:1;4207:9;4203:17;4196:47;4257:96;4348:4;4339:6;4257:96;;;4249:104;;4153:210;;;;;4370:256;;4432:2;4426:9;4416:19;;4470:4;4462:6;4458:17;4569:6;4557:10;4554:22;4533:18;4521:10;4518:34;4515:62;4512:2;;;4590:1;4587;4580:12;4512:2;4610:10;4606:2;4599:22;4410:216;;;;;4633:259;;4777:18;4769:6;4766:30;4763:2;;;4809:1;4806;4799:12;4763:2;4853:4;4849:9;4842:4;4834:6;4830:17;4826:33;4818:41;;4882:4;4876;4872:15;4864:23;;4700:192;;;;4899:88;;4976:5;4970:12;4960:22;;4954:33;;;;4994:92;;5075:5;5069:12;5059:22;;5053:33;;;;5093:151;;5172:66;5165:5;5161:78;5150:89;;5144:100;;;;5251:79;;5320:5;5309:16;;5303:27;;;;5337:79;;5406:5;5395:16;;5389:27;;;;5424:145;5505:6;5500:3;5495;5482:30;5561:1;5552:6;5547:3;5543:16;5536:27;5475:94;;;;5578:268;5643:1;5650:101;5664:6;5661:1;5658:13;5650:101;;;5740:1;5735:3;5731:11;5725:18;5721:1;5716:3;5712:11;5705:39;5686:2;5683:1;5679:10;5674:15;;5650:101;;;5766:6;5763:1;5760:13;5757:2;;;5831:1;5822:6;5817:3;5813:16;5806:27;5757:2;5627:219;;;;;5854:97;;5942:2;5938:7;5933:2;5926:5;5922:14;5918:28;5908:38;;5902:49;;;",
+  "source": "pragma solidity ^0.4.23;\npragma experimental ABIEncoderV2;\n\nimport \"./Employee.sol\";\n\ncontract EmployeeBGHistory {\n    constructor() public {\n        \n    }\n\n    //mapping(address => BgStructsContract.Employee) employees;\n    BgStructsContract.Employee[] public employees;\n\n    function test() public pure returns (string){\n            return \"foobar\";\n    }\n\n    function getEmployeeHistory(string _name) public pure returns (BgStructsContract.Employee) {\n        return BgStructsContract.Employee({name: _name, id: 1, age: 12, communicationAddress: \"some address\"});\n    }\n}",
+  "sourcePath": "/home/push/Work/Hakathon/bgv/bgv-etherium/contracts/EmployeeBGHistory.sol",
+  "ast": {
+    "absolutePath": "/home/push/Work/Hakathon/bgv/bgv-etherium/contracts/EmployeeBGHistory.sol",
+    "exportedSymbols": {
+      "EmployeeBGHistory": [
+        56
+      ]
+    },
+    "id": 57,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 22,
+        "literals": [
+          "solidity",
+          "^",
+          "0.4",
+          ".23"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:24:1"
+      },
+      {
+        "id": 23,
+        "literals": [
+          "experimental",
+          "ABIEncoderV2"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "25:33:1"
+      },
+      {
+        "absolutePath": "/home/push/Work/Hakathon/bgv/bgv-etherium/contracts/Employee.sol",
+        "file": "./Employee.sol",
+        "id": 24,
+        "nodeType": "ImportDirective",
+        "scope": 57,
+        "sourceUnit": 21,
+        "src": "60:24:1",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 56,
+        "linearizedBaseContracts": [
+          56
+        ],
+        "name": "EmployeeBGHistory",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": {
+              "id": 27,
+              "nodeType": "Block",
+              "src": "140:16:1",
+              "statements": []
+            },
+            "documentation": null,
+            "id": 28,
+            "implemented": true,
+            "isConstructor": true,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 25,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "130:2:1"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 26,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "140:0:1"
+            },
+            "scope": 56,
+            "src": "119:37:1",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 31,
+            "name": "employees",
+            "nodeType": "VariableDeclaration",
+            "scope": 56,
+            "src": "226:45:1",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_array$_t_struct$_Employee_$19_storage_$dyn_storage",
+              "typeString": "struct BgStructsContract.Employee[]"
+            },
+            "typeName": {
+              "baseType": {
+                "contractScope": null,
+                "id": 29,
+                "name": "BgStructsContract.Employee",
+                "nodeType": "UserDefinedTypeName",
+                "referencedDeclaration": 19,
+                "src": "226:26:1",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_struct$_Employee_$19_storage_ptr",
+                  "typeString": "struct BgStructsContract.Employee"
+                }
+              },
+              "id": 30,
+              "length": null,
+              "nodeType": "ArrayTypeName",
+              "src": "226:28:1",
+              "typeDescriptions": {
+                "typeIdentifier": "t_array$_t_struct$_Employee_$19_storage_$dyn_storage_ptr",
+                "typeString": "struct BgStructsContract.Employee[]"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 38,
+              "nodeType": "Block",
+              "src": "322:36:1",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "hexValue": "666f6f626172",
+                    "id": 36,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": true,
+                    "kind": "string",
+                    "lValueRequested": false,
+                    "nodeType": "Literal",
+                    "src": "343:8:1",
+                    "subdenomination": null,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_stringliteral_38d18acb67d25c8bb9942764b62f18e17054f66a817bd4295423adf9ed98873e",
+                      "typeString": "literal_string \"foobar\""
+                    },
+                    "value": "foobar"
+                  },
+                  "functionReturnParameters": 35,
+                  "id": 37,
+                  "nodeType": "Return",
+                  "src": "336:15:1"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 39,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": true,
+            "modifiers": [],
+            "name": "test",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 32,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "291:2:1"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 35,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 34,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 39,
+                  "src": "315:6:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 33,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "315:6:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "314:8:1"
+            },
+            "scope": 56,
+            "src": "278:80:1",
+            "stateMutability": "pure",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 54,
+              "nodeType": "Block",
+              "src": "455:119:1",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 48,
+                        "name": "_name",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 41,
+                        "src": "506:5:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_string_memory_ptr",
+                          "typeString": "string memory"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "hexValue": "31",
+                        "id": 49,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "number",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "517:1:1",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_rational_1_by_1",
+                          "typeString": "int_const 1"
+                        },
+                        "value": "1"
+                      },
+                      {
+                        "argumentTypes": null,
+                        "hexValue": "3132",
+                        "id": 50,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "number",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "525:2:1",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_rational_12_by_1",
+                          "typeString": "int_const 12"
+                        },
+                        "value": "12"
+                      },
+                      {
+                        "argumentTypes": null,
+                        "hexValue": "736f6d652061646472657373",
+                        "id": 51,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "string",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "551:14:1",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_stringliteral_0966329abe5c2ce3d675891e132b395ec417b3bd95746c8601fde0d59c609663",
+                          "typeString": "literal_string \"some address\""
+                        },
+                        "value": "some address"
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 46,
+                        "name": "BgStructsContract",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 20,
+                        "src": "472:17:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_contract$_BgStructsContract_$20_$",
+                          "typeString": "type(contract BgStructsContract)"
+                        }
+                      },
+                      "id": 47,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "Employee",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 19,
+                      "src": "472:26:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_type$_t_struct$_Employee_$19_storage_ptr_$",
+                        "typeString": "type(struct BgStructsContract.Employee storage pointer)"
+                      }
+                    },
+                    "id": 52,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "structConstructorCall",
+                    "lValueRequested": false,
+                    "names": [
+                      "name",
+                      "id",
+                      "age",
+                      "communicationAddress"
+                    ],
+                    "nodeType": "FunctionCall",
+                    "src": "472:95:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Employee_$19_memory",
+                      "typeString": "struct BgStructsContract.Employee memory"
+                    }
+                  },
+                  "functionReturnParameters": 45,
+                  "id": 53,
+                  "nodeType": "Return",
+                  "src": "465:102:1"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 55,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": true,
+            "modifiers": [],
+            "name": "getEmployeeHistory",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 42,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 41,
+                  "name": "_name",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 55,
+                  "src": "392:12:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 40,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "392:6:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "391:14:1"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 45,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 44,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 55,
+                  "src": "427:26:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_Employee_$19_memory_ptr",
+                    "typeString": "struct BgStructsContract.Employee"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 43,
+                    "name": "BgStructsContract.Employee",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 19,
+                    "src": "427:26:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Employee_$19_storage_ptr",
+                      "typeString": "struct BgStructsContract.Employee"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "426:28:1"
+            },
+            "scope": 56,
+            "src": "364:210:1",
+            "stateMutability": "pure",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 57,
+        "src": "86:490:1"
+      }
+    ],
+    "src": "0:576:1"
+  },
+  "legacyAST": {
+    "absolutePath": "/home/push/Work/Hakathon/bgv/bgv-etherium/contracts/EmployeeBGHistory.sol",
+    "exportedSymbols": {
+      "EmployeeBGHistory": [
+        56
+      ]
+    },
+    "id": 57,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 22,
+        "literals": [
+          "solidity",
+          "^",
+          "0.4",
+          ".23"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:24:1"
+      },
+      {
+        "id": 23,
+        "literals": [
+          "experimental",
+          "ABIEncoderV2"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "25:33:1"
+      },
+      {
+        "absolutePath": "/home/push/Work/Hakathon/bgv/bgv-etherium/contracts/Employee.sol",
+        "file": "./Employee.sol",
+        "id": 24,
+        "nodeType": "ImportDirective",
+        "scope": 57,
+        "sourceUnit": 21,
+        "src": "60:24:1",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 56,
+        "linearizedBaseContracts": [
+          56
+        ],
+        "name": "EmployeeBGHistory",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": {
+              "id": 27,
+              "nodeType": "Block",
+              "src": "140:16:1",
+              "statements": []
+            },
+            "documentation": null,
+            "id": 28,
+            "implemented": true,
+            "isConstructor": true,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 25,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "130:2:1"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 26,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "140:0:1"
+            },
+            "scope": 56,
+            "src": "119:37:1",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 31,
+            "name": "employees",
+            "nodeType": "VariableDeclaration",
+            "scope": 56,
+            "src": "226:45:1",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_array$_t_struct$_Employee_$19_storage_$dyn_storage",
+              "typeString": "struct BgStructsContract.Employee[]"
+            },
+            "typeName": {
+              "baseType": {
+                "contractScope": null,
+                "id": 29,
+                "name": "BgStructsContract.Employee",
+                "nodeType": "UserDefinedTypeName",
+                "referencedDeclaration": 19,
+                "src": "226:26:1",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_struct$_Employee_$19_storage_ptr",
+                  "typeString": "struct BgStructsContract.Employee"
+                }
+              },
+              "id": 30,
+              "length": null,
+              "nodeType": "ArrayTypeName",
+              "src": "226:28:1",
+              "typeDescriptions": {
+                "typeIdentifier": "t_array$_t_struct$_Employee_$19_storage_$dyn_storage_ptr",
+                "typeString": "struct BgStructsContract.Employee[]"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 38,
+              "nodeType": "Block",
+              "src": "322:36:1",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "hexValue": "666f6f626172",
+                    "id": 36,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": true,
+                    "kind": "string",
+                    "lValueRequested": false,
+                    "nodeType": "Literal",
+                    "src": "343:8:1",
+                    "subdenomination": null,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_stringliteral_38d18acb67d25c8bb9942764b62f18e17054f66a817bd4295423adf9ed98873e",
+                      "typeString": "literal_string \"foobar\""
+                    },
+                    "value": "foobar"
+                  },
+                  "functionReturnParameters": 35,
+                  "id": 37,
+                  "nodeType": "Return",
+                  "src": "336:15:1"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 39,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": true,
+            "modifiers": [],
+            "name": "test",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 32,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "291:2:1"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 35,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 34,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 39,
+                  "src": "315:6:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 33,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "315:6:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "314:8:1"
+            },
+            "scope": 56,
+            "src": "278:80:1",
+            "stateMutability": "pure",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 54,
+              "nodeType": "Block",
+              "src": "455:119:1",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 48,
+                        "name": "_name",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 41,
+                        "src": "506:5:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_string_memory_ptr",
+                          "typeString": "string memory"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "hexValue": "31",
+                        "id": 49,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "number",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "517:1:1",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_rational_1_by_1",
+                          "typeString": "int_const 1"
+                        },
+                        "value": "1"
+                      },
+                      {
+                        "argumentTypes": null,
+                        "hexValue": "3132",
+                        "id": 50,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "number",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "525:2:1",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_rational_12_by_1",
+                          "typeString": "int_const 12"
+                        },
+                        "value": "12"
+                      },
+                      {
+                        "argumentTypes": null,
+                        "hexValue": "736f6d652061646472657373",
+                        "id": 51,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "string",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "551:14:1",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_stringliteral_0966329abe5c2ce3d675891e132b395ec417b3bd95746c8601fde0d59c609663",
+                          "typeString": "literal_string \"some address\""
+                        },
+                        "value": "some address"
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 46,
+                        "name": "BgStructsContract",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 20,
+                        "src": "472:17:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_contract$_BgStructsContract_$20_$",
+                          "typeString": "type(contract BgStructsContract)"
+                        }
+                      },
+                      "id": 47,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "Employee",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 19,
+                      "src": "472:26:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_type$_t_struct$_Employee_$19_storage_ptr_$",
+                        "typeString": "type(struct BgStructsContract.Employee storage pointer)"
+                      }
+                    },
+                    "id": 52,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "structConstructorCall",
+                    "lValueRequested": false,
+                    "names": [
+                      "name",
+                      "id",
+                      "age",
+                      "communicationAddress"
+                    ],
+                    "nodeType": "FunctionCall",
+                    "src": "472:95:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Employee_$19_memory",
+                      "typeString": "struct BgStructsContract.Employee memory"
+                    }
+                  },
+                  "functionReturnParameters": 45,
+                  "id": 53,
+                  "nodeType": "Return",
+                  "src": "465:102:1"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 55,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": true,
+            "modifiers": [],
+            "name": "getEmployeeHistory",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 42,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 41,
+                  "name": "_name",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 55,
+                  "src": "392:12:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 40,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "392:6:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "391:14:1"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 45,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 44,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 55,
+                  "src": "427:26:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_Employee_$19_memory_ptr",
+                    "typeString": "struct BgStructsContract.Employee"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 43,
+                    "name": "BgStructsContract.Employee",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 19,
+                    "src": "427:26:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Employee_$19_storage_ptr",
+                      "typeString": "struct BgStructsContract.Employee"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "426:28:1"
+            },
+            "scope": 56,
+            "src": "364:210:1",
+            "stateMutability": "pure",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 57,
+        "src": "86:490:1"
+      }
+    ],
+    "src": "0:576:1"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.4.23+commit.124ca40d.Emscripten.clang"
+  },
+  "networks": {
+    "5777": {
+      "events": {},
+      "links": {},
+      "address": "0x72d1b06489efb10fd0089f759e50949a2b66abc7",
+      "transactionHash": "0xe7bb063bb702f54b279f6e35f24404ed59e9854f86df4a40d4b3f54e0884a1bd"
+    }
+  },
+  "schemaVersion": "2.0.0",
+  "updatedAt": "2018-05-25T13:14:11.161Z"
+}
