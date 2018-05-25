@@ -11,11 +11,15 @@ contract EmployeeBGHistory {
     //mapping(address => BgStructsContract.Employee) employees;
     BgStructsContract.Employee[] public employees;
 
-    function test() public pure returns (string){
+    function test() public view returns (string){
             return "foobar";
     }
 
-    function getEmployeeHistory(string _name) public pure returns (BgStructsContract.Employee) {
-        return BgStructsContract.Employee({name: _name, id: 1, age: 12, communicationAddress: "some address"});
+    function getEmployeeHistory(string _name) public view returns (string) {
+        return "{name:'some name'}";
+    }
+
+    function getBalanceInEth(address addr) public view returns(int){
+            return 18776;
     }
 }
