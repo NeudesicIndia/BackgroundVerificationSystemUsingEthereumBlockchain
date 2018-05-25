@@ -11,12 +11,46 @@ contract EmployeeBGHistory {
     //mapping(address => BgStructsContract.Employee) employees;
     BgStructsContract.Employee[] public employees;
 
-    function test() public view returns (string){
-            return "foobar";
-    }
+   
 
     function getEmployeeHistory(string _name) public view returns (string) {
-        return "{name:'some name'}";
+        // var obj= {"name":"some name", "name1":"some name1"};
+            
+        return _name;
+    }
+
+    function getEmployeeCount() public view returns (uint) {
+       return employees.length;
+    }
+
+     function getEmployeeCountLoop() public view returns (uint) {
+         uint count = 0;
+        //string[]  emp;
+        for(uint i = 0; i < 10; i++) {
+            count++;
+        }
+        return count;
+    }
+
+
+    function AddUpdateEmployeeHistory(byte _id,string _name) public view returns (bool) {
+        var isEmployeeExists = false;
+        for(uint i = 0; i < employees.length; i++) {
+            if (employees[i].id == _id) {
+                isEmployeeExists= true;
+                return true;
+             //update
+            }
+        }
+
+        if(!isEmployeeExists){
+            employees.push( BgStructsContract.Employee({id:_id,name:_name,age:18,communicationAddress:'test'}));
+            return true;
+        }
+    }
+
+    function test() public view returns (string){
+            return "foobar";
     }
 
     function getBalanceInEth(address addr) public view returns(int){
