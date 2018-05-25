@@ -16,7 +16,7 @@ contract EmployeeBGHistory {
     }
 
     function getEmployeeHistory(string _name) public view returns (string) {
-        return "{name:'some name'}";
+        return "{name:'some other name'}";
     }
 
     function getBalanceInEth(address addr) public view returns(int){
