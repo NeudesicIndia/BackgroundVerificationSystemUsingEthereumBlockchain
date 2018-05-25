@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Button from 'react-bootstrap/lib/Button';
 import EmployeeBGHistoryContract from '../build/contracts/EmployeeBGHistory.json'
 import getWeb3 from './utils/getWeb3'
 
@@ -12,6 +13,7 @@ import './App.css'
 class App extends Component {
   constructor(props) {
     super(props)
+    this.addUserDetails = this.addUserDetails.bind(this); 
 
     this.state = {
       employeeCount: 0,
@@ -21,8 +23,9 @@ class App extends Component {
       name:null,
       age:null,
       address:"",
-      employementHistory:[{employerName:"Neudesic", from:"12/1/2018", to:"11/11/111"},
-      {employerName:"qweqwe", from:"12/1/2018", to:"11/11/111"}]
+      employementHistory:[{employerName:"Neudesic", from:"12/1/2018", to:"11/11/2020"}
+      //{employerName:"qweqwe", from:"12/1/2018", to:"11/11/111"}
+    ]
      
     }
   }
@@ -91,9 +94,11 @@ class App extends Component {
     if(onElement === "empid")
     this.setState({empId: event.target.value})
     else if(onElement === "name")
-    this.setState({empId: event.target.value})
+    this.setState({name: event.target.value})
     else if(onElement === "age")
     this.setState({age: event.target.value})
+    else if(onElement === "address")
+    this.setState({address: event.target.value})
     else if(onElement === "searchEmpId")
     {
       this.setState({searchEmpId: event.target.value});
@@ -103,8 +108,21 @@ class App extends Component {
   }
 
   
-  addUserDetails = ()=>{
+  addUserDetails (){
+    var employmentHistory =this.state.employementHistory[this.state.employementHistory.length-1] ;
+    // this.employeeBGHistoryInstance.addHistory(this.state.empId,employmentHistory.employerName,employmentHistory.from,
+    //    employmentHistory.to).then((employeeResponse)=>{
+    //   console.log('employee add response');
+    //   console.log(employeeResponse);
+      
+    // })
 
+    this.employeeBGHistoryInstance.addHistory('12','neu','qw',
+      'employmentHistory.to').then((employeeResponse)=>{
+     console.log('employee add response');
+     console.log(employeeResponse);
+     
+   })
   }
   render() {
     return (
@@ -132,19 +150,19 @@ class App extends Component {
                   Age: <input type="number"  value={this.state.age} onChange={this.handleChange.bind(this, "age")} />
                   </div>
                   <br/>
-                  Address: <textarea   value={this.state.address} />
+                  Address: <textarea  value={this.state.address} onChange={this.handleChange.bind(this, "address")}/>
                   <br/>
                   <br/>
                   {this.state.employementHistory.map((emp,i) => {return <div>
 
 
-employee name : <input type  = "text" value={emp.employerName}/>
-from : <input type  = "text" value={emp.from}/>
-to:  <input type  = "text" value={emp.to}/>
+employee name : <input type  = "text" value={emp.employerName} onChange={this.handleChange.bind(this, "emp.employerName")}/>
+from : <input type  = "text" value={emp.from} onChange={this.handleChange.bind(this, "emp.from")}/>
+to:  <input type  = "text" value={emp.to} onChange={this.handleChange.bind(this, "emp.to")}/>
 <br/>
 <br/>
                   </div> } )}
-                  <button type="Submit" onClick={this.addUserDetails()} >Submit</button>
+                  <input type="button" onClick={this.addUserDetails} value="Submit"/>
                   <button>Cancel</button>
               </form>
 
