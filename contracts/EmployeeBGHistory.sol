@@ -14,6 +14,7 @@ contract EmployeeBGHistory {
    
 
     function getEmployeeHistory(string _name) public view returns (string) {
+<<<<<<< HEAD
         // var obj= {"name":"some name", "name1":"some name1"};
             
         return _name;
@@ -51,6 +52,9 @@ contract EmployeeBGHistory {
 
     function test() public view returns (string){
             return "foobar";
+=======
+        return "{name:'some other name'}";
+>>>>>>> 1fcfe8736808894d6ac684b645198b0399346078
     }
 
     function getBalanceInEth(address addr) public view returns(int){
