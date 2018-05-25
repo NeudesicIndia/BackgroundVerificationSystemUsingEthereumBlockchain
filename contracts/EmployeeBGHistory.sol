@@ -1,63 +1,36 @@
 pragma solidity ^0.4.23;
 pragma experimental ABIEncoderV2;
 
-import "./Employee.sol";
-
 contract EmployeeBGHistory {
+     struct Employee {
+        string name;
+        uint age;
+        string communicationAddress;
+        //OrganizationHistory[] organizationHistory;
+    }
+
     constructor() public {
-        
     }
 
-    //mapping(address => BgStructsContract.Employee) employees;
-    BgStructsContract.Employee[] public employees;
+    mapping(string => Employee) employees;
+    string[] public employeeKeys;
 
-   
+    function setEmployee(string empId, string name, uint age, string cAddress) public {
+        var employee = employees[empId];
+        employee.name = name;
+        employee.age = age;
+        employee.communicationAddress = cAddress;
 
-    function getEmployeeHistory(string _name) public view returns (string) {
-<<<<<<< HEAD
-        // var obj= {"name":"some name", "name1":"some name1"};
-            
-        return _name;
+        employeeKeys.push(empId) - 1;
+    }
+    function getEmployeeKeys() view public returns (string[]) {
+        return employeeKeys;
+    }
+    function getEmployee(string empId) view public returns (string, uint, string) {
+        return (employees[empId].name, employees[empId].age, employees[empId].communicationAddress);
+    }
+    function getEmployeeCount() view public returns (uint) {
+        return employeeKeys.length;
     }
 
-    function getEmployeeCount() public view returns (uint) {
-       return employees.length;
-    }
-
-     function getEmployeeCountLoop() public view returns (uint) {
-         uint count = 0;
-        //string[]  emp;
-        for(uint i = 0; i < 10; i++) {
-            count++;
-        }
-        return count;
-    }
-
-
-    function AddUpdateEmployeeHistory(byte _id,string _name) public view returns (bool) {
-        var isEmployeeExists = false;
-        for(uint i = 0; i < employees.length; i++) {
-            if (employees[i].id == _id) {
-                isEmployeeExists= true;
-                return true;
-             //update
-            }
-        }
-
-        if(!isEmployeeExists){
-            employees.push( BgStructsContract.Employee({id:_id,name:_name,age:18,communicationAddress:'test'}));
-            return true;
-        }
-    }
-
-    function test() public view returns (string){
-            return "foobar";
-=======
-        return "{name:'some other name'}";
->>>>>>> 1fcfe8736808894d6ac684b645198b0399346078
-    }
-
-    function getBalanceInEth(address addr) public view returns(int){
-            return 18776;
-    }
 }

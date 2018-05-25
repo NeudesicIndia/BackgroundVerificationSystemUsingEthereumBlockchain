@@ -9,12 +9,12 @@ contract BgStructsContract {
         uint256 ExitDate;
     }
 
-    struct Employee {
-        byte id;
-        string name;
-        uint age;
-        string communicationAddress;
-        //OrganizationHistory[] organizationHistory;
-    }
+    // struct Employee {
+    //     byte id;
+    //     string name;
+    //     uint age;
+    //     string communicationAddress;
+    //     //OrganizationHistory[] organizationHistory;
+    // }
 
 }
