@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Button from 'react-bootstrap/lib/Button';
+//import Button from 'react-bootstrap/lib/Button';
 import EmployeeBGHistoryContract from '../build/contracts/EmployeeBGHistory.json'
 import getWeb3 from './utils/getWeb3'
 
@@ -13,7 +13,7 @@ import './App.css'
 class App extends Component {
   constructor(props) {
     super(props)
-    this.addUserDetails = this.addUserDetails.bind(this); 
+    this.addEmpHistory = this.addEmpHistory.bind(this); 
 
     this.state = {
       employeeCount: 0,
@@ -62,11 +62,12 @@ class App extends Component {
 
     // Declaring this for later so we can chain functions on SimpleStorage.
     this.employeeBGHistoryInstance= null;
-
+    this.accounts =null;
     // Get accounts.
     this.state.web3.eth.getAccounts((error, accounts) => {
       employeeBGHistory.deployed().then((instance) => {
         this.employeeBGHistoryInstance = instance
+        this.accounts = accounts;
 
         // Stores a given value, 5 by default.
         //return employeeBGHistoryInstance.set(5, {from: accounts[0]})
@@ -80,15 +81,7 @@ class App extends Component {
     })
   }
 
-  searchEmployee (empId){
-    this.employeeBGHistoryInstance.getEmployee(empId).then((employeeResponse)=>{
-      console.log('employee search response')
-      console.log(employeeResponse);
-      this.setState({ name: employeeResponse[0] });
-      this.setState({ address: employeeResponse[2] });
-      this.setState({ age: employeeResponse[1] });
-    })
-  }
+  
 
   handleChange=(onElement,event)=>{
     if(onElement === "empid")
@@ -102,28 +95,60 @@ class App extends Component {
     else if(onElement === "searchEmpId")
     {
       this.setState({searchEmpId: event.target.value});
-      this.searchEmployee(event.target.value);
+      //this.searchEmployee(event.target.value);
     }
     
   }
-
-  
-  addUserDetails (){
-    var employmentHistory =this.state.employementHistory[this.state.employementHistory.length-1] ;
-    // this.employeeBGHistoryInstance.addHistory(this.state.empId,employmentHistory.employerName,employmentHistory.from,
-    //    employmentHistory.to).then((employeeResponse)=>{
-    //   console.log('employee add response');
-    //   console.log(employeeResponse);
+  // 
+  searchEmployee (){
+    this.employeeBGHistoryInstance.getEmployee(this.state.searchEmpId,{ from: this.accounts[0], gas: 4712389 }).then((employeeResponse)=>{
+      console.log('employee search response')
+      console.log(employeeResponse);
       
-    // })
-
-    this.employeeBGHistoryInstance.addHistory('12','neu','qw',
-      'employmentHistory.to').then((employeeResponse)=>{
-     console.log('employee add response');
-     console.log(employeeResponse);
-     
-   })
+      this.setState({ name: employeeResponse[0] });
+      this.setState({ address: employeeResponse[2] });
+      this.setState({ age: employeeResponse[1] });
+    },(error)=>{
+      console.log(error);
+      this.setState({ empId: '' });
+      this.setState({ name: '' });
+      this.setState({ address: '' });
+      this.setState({ age: '' });
+    })
   }
+  
+  addEmpHistory(){
+    var employmentHistory =this.state.employementHistory[this.state.employementHistory.length-1] ;
+    this.employeeBGHistoryInstance.addHistory(this.state.empId,employmentHistory.employerName,employmentHistory.from,
+       employmentHistory.to,{ from: this.accounts[0], gas: 4712389 }).then((employeeResponse)=>{
+      console.log('employee History add response');
+      console.log(employeeResponse);
+      
+    })
+
+    // this.employeeBGHistoryInstance.addHistory('12','neu','qw',
+    //   'employmentHistory.to').then((employeeResponse)=>{
+    //  console.log('employee add response');
+    //  console.log(employeeResponse);
+   //})
+  }
+addEmp(){
+  this.employeeBGHistoryInstance.setEmployee(this.state.empId, this.state.name, this.state.age, this.state.address,{ from: this.accounts[0], gas: 4712389 }).then((addEmployeeResponse)=>{
+   console.log('employee add response');
+   console.log(addEmployeeResponse);
+   this.setState({ empId: '' });
+   this.setState({ name: '' });
+    this.setState({ address: '' });
+    this.setState({ age: '' });
+    this.setState({searchEmpId: ''});
+    this.employeeBGHistoryInstance.getEmployeeCount().then((result) => {
+      // Update state with the result.
+     return this.setState({ employeeCount: result.c[0] });
+    });
+   
+ });
+}
+
   render() {
     return (
       <div className="App">
@@ -134,19 +159,25 @@ class App extends Component {
         <main className="container">
           <div className="pure-g">
             <div className="pure-u-1-1">
-              <h1>Good to Go!</h1>
-              <p>Your Truffle Box is installed and ready.</p>
-              <h2>Smart Contract Example</h2>
-              <p>If your contracts compiled and migrated successfully, below will show a stored value of 5 (by default).</p>
-              <p>Try changing the value stored on <strong>line 59</strong> of App.js.</p>
-              <p>The stored value is: {this.state.employeeCount}</p>
+              <h1>Employee Background Verification!</h1>
+              <p>Technology used: Ganache,Truffle, Web3js, Reactjs</p>
+              <h2>Smart Contract Example to do Following:</h2>
+              <p>Search Employee and Add Employee.</p>
+              <p>Employment Background</p>
+              <p>Educational Background</p>
+              <p>Criminal Background</p>
+              
+              <p>Total number of Employees in the Ledger: <strong>{this.state.employeeCount}</strong></p>
               <form >
-                  Search Employee : <input type="text" value={this.state.empId} onChange={this.handleChange.bind(this, "searchEmpId")} />
+                  Search Employee : <input type="text" value={this.state.searchEmpId} onChange={this.handleChange.bind(this, "searchEmpId")}/>
+                  
+                  {" "}
+                  <input type="button" onClick={this.searchEmployee.bind(this)} value="Search"/>
                   <br/>
                   <br/>
                   <div>
-                  emp id: <input type="text" value={this.state.empId} onChange={this.handleChange.bind(this, "empid")} />
-                  Name: <input type="text"  value={this.state.name} onChange={this.handleChange.bind(this, "name")} />
+                  emp id: <input type="text" value={this.state.empId} onChange={this.handleChange.bind(this, "empid")} />{" "}
+                  Name: <input type="text"  value={this.state.name} onChange={this.handleChange.bind(this, "name")} />{" "}
                   Age: <input type="number"  value={this.state.age} onChange={this.handleChange.bind(this, "age")} />
                   </div>
                   <br/>
@@ -156,13 +187,16 @@ class App extends Component {
                   {this.state.employementHistory.map((emp,i) => {return <div>
 
 
-employee name : <input type  = "text" value={emp.employerName} onChange={this.handleChange.bind(this, "emp.employerName")}/>
-from : <input type  = "text" value={emp.from} onChange={this.handleChange.bind(this, "emp.from")}/>
-to:  <input type  = "text" value={emp.to} onChange={this.handleChange.bind(this, "emp.to")}/>
+Employer name : <input type  = "text" value={emp.employerName} onChange={this.handleChange.bind(this, "emp.employerName")}/>{" "}
+From : <input type  = "text" value={emp.from} onChange={this.handleChange.bind(this, "emp.from")}/>{" "}
+To:  <input type  = "text" value={emp.to} onChange={this.handleChange.bind(this, "emp.to")}/>{" "}
 <br/>
 <br/>
                   </div> } )}
-                  <input type="button" onClick={this.addUserDetails} value="Submit"/>
+                  <input type="button" onClick={this.addEmp.bind(this)} value="AddEmployee"/>{" "}
+                  <input type="button" onClick={this.addEmpHistory} value="Employment Background"/>{" "}
+                  <input type="button" value="Educational Background"/>{" "}{" "}
+                  <input type="button" onClick={this.addEmpHistory} value="Criminal Background"/>{" "}
                   <button>Cancel</button>
               </form>
 
