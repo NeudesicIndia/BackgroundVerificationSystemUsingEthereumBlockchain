@@ -49,10 +49,10 @@
     "whatwg-fetch": "1.0.0"
   },
   "dependencies": {
-    "dotenv": "^2.0.0",
     "react": "^15.6.2",
     "react-bootstrap": "^0.32.1",
-    "react-dom": "^15.6.2"
+    "react-dom": "^15.6.2",
+    "web3": "0.20.6"
   },
   "scripts": {
     "start": "node scripts/start.js",
@@ -98,5 +98,8 @@
   },
   "eslintConfig": {
     "extends": "react-app"
-  }
+  },
+  "main": "index.js",
+  "repository": "https://github.com/psingh-neudesic/bgv-etherium.git",
+  "license": "MIT"
 }
