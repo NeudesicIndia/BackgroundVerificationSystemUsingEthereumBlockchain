@@ -2,7 +2,7 @@ import React, {
     Component
 } from 'react'
 
-import { Button, Form, FormGroup, Label, Input, FormText,Col } from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input, FormText, Col } from 'reactstrap';
 import EmployeeBGHistoryContract from '../../build/contracts/EmployeeBGHistory.json'
 import getWeb3 from '../utils/getWeb3'
 
@@ -10,6 +10,9 @@ import getWeb3 from '../utils/getWeb3'
 import { BootstrapTable, TableHeaderColumn, InsertButton } from 'react-bootstrap-table';
 
 import EditHistoryButton from './edit_history_button'
+import AddEmployeeModal from './add_employee_modal'
+
+
 
 class EmployeeSearch extends Component {
     constructor(props) {
@@ -18,6 +21,7 @@ class EmployeeSearch extends Component {
 
 
         this.state = {
+            isNewEmployee: false,
             employeeCount: 0,
             searchEmpId: '',
             web3: null,
@@ -85,6 +89,31 @@ class EmployeeSearch extends Component {
         })
     }
 
+    handleChange = (onElement, event) => {
+        if (onElement === "empId")
+            this.setState({
+                empId: event.target.value
+            })
+        else if (onElement === "name")
+            this.setState({
+                name: event.target.value
+            })
+        else if (onElement === "age")
+            this.setState({
+                age: event.target.value
+            })
+        else if (onElement === "address")
+            this.setState({
+                address: event.target.value
+            })
+        else if (onElement === "searchEmpId") {
+            this.setState({
+                searchEmpId: event.target.value
+            });
+            //this.searchEmployee(event.target.value);
+        }
+
+    }
 
     searchEmployee() {
         this.employeeBGHistoryInstance.getEmployee(this.state.searchEmpId, {
@@ -151,50 +180,93 @@ class EmployeeSearch extends Component {
     addEmpHistory() {
         var employmentHistory = this.state.employementHistory[this.state.employementHistory.length - 1];
         this.employeeBGHistoryInstance.addHistory(this.state.empId, employmentHistory.employerName, employmentHistory.from,
-          employmentHistory.to, { 
-            from:  this.accounts[0],
-             gas:  4712389 
-          }).then((employeeResponse) => {
-          console.log('employee History add response');
-          console.log(employeeResponse);
-    
-        })
-    
+            employmentHistory.to, {
+                from: this.accounts[0],
+                gas: 4712389
+            }).then((employeeResponse) => {
+                console.log('employee History add response');
+                console.log(employeeResponse);
+
+            })
+
         // this.employeeBGHistoryInstance.addHistory('12','neu','qw',
         //   'employmentHistory.to').then((employeeResponse)=>{
         //  console.log('employee add response');
         //  console.log(employeeResponse);
         //})
-      }
+    }
 
+    // handleChange = (onElement, event) => {
+    //     if (onElement === "searchEmpId")
+    //         this.setState({
+    //             searchEmpId: event.target.value
+    //         })
 
-    handleChange = (onElement, event) => {
-        if (onElement === "searchEmpId")
-            this.setState({
-                searchEmpId: event.target.value
-            })
+    // }
+
+    addEmployeeDetails() {
+        this.setState({
+            isNewEmployee: true
+        })
+
 
     }
 
+    saveEmployeeDetails() {
+        this.employeeBGHistoryInstance.setEmployee(this.state.empId, this.state.name, this.state.age, this.state.address, {
+            from: this.accounts[0],
+            gas: 4712389
+        }).then((addEmployeeResponse) => {
+            console.log('employee add response');
+            console.log(addEmployeeResponse);
+
+            this.setState({
+                isNewEmployee: false
+            })
+
+            this.setState({
+                empId: ''
+            });
+            this.setState({
+                name: ''
+            });
+            this.setState({
+                address: ''
+            });
+            this.setState({
+                age: ''
+            });
+            this.setState({
+                searchEmpId: ''
+            });
+            this.employeeBGHistoryInstance.getEmployeeCount().then((result) => {
+                // Update state with the result.
+                return this.setState({
+                    employeeCount: result.c[0]
+                });
+            });
+
+        });
+    }
 
     handleInsertButtonClick = (onClick) => {
         // Custom your onClick event here,
         // it's not necessary to implement this function if you have no any process before onClick
         console.log('This is my custom function for InserButton click event');
         onClick();
-      }
-      createCustomInsertButton = (onClick) => {
+    }
+    createCustomInsertButton = (onClick) => {
         return (
-          <InsertButton
-            btnText='Add Employment History'
-            btnContextual='btn-info'
-            className='my-custom-class'
-            btnGlyphicon='glyphicon-edit'
-            onClick={ () => this.handleInsertButtonClick(onClick) }/>
+            <InsertButton
+                btnText='Add Employment History'
+                btnContextual='btn-info'
+                className='my-custom-class'
+                btnGlyphicon='glyphicon-edit'
+                onClick={() => this.handleInsertButtonClick(onClick)} />
         );
-      }
-     
-      onAddRow(row) {
+    }
+
+    onAddRow(row) {
         this.state.employementHistory.push({ employerName: row.employerName, from: row.from, to: row.to })
         this.setState({
             employementHistory: this.state.employementHistory
@@ -208,9 +280,19 @@ class EmployeeSearch extends Component {
     }
 
     render() {
+        var partial = '';
+        if (this.state.isNewEmployee) {
+            partial = <FormGroup>
+                <Button onClick={() => this.saveEmployeeDetails()}>Save Employee Details</Button>
+                <Button >Cancel</Button>
+            </FormGroup>
+        }
+
+
         return (
             <div>
                 <h4>Verify Employee Details </h4>
+                <Button className="btn btn-info float-right" onClick={() => this.addEmployeeDetails()}>Add Employee Details</Button>
                 <Form>
                     <FormGroup>
                         <Label for="searchEmpId">PAN Number</Label>
@@ -222,48 +304,76 @@ class EmployeeSearch extends Component {
                             } />
                         <Button onClick={() => this.searchEmployee()}>Submit</Button>
                         <Button >Cancel</Button>
+
+
                     </FormGroup>
 
 
                     <div>
                         <h4> Employe Details </h4>
+
                         <div className="clearfix " style={{ padding: '.5rem' }}>
 
                             <Form>
                                 <FormGroup row>
-                                    <Label for="searchEmpId" sm={2}>PAN Number</Label>
+                                    <Label for="empId" sm={2}>PAN Number</Label>
                                     <Col sm={5}>
-                                        <Input disabled type="text" name="searchEmpId" id="searchEmpId" placeholder="PAN Number" value={
-                                            this.state.searchEmpId
-                                        } />
+                                        <Input disabled={!this.state.isNewEmployee} type="text" name="empId" id="empId"
+                                            placeholder="PAN Number" value={
+                                                this.state.empId
+                                            } onChange={
+                                                this.handleChange.bind(this, "empId")
+                                            } />
                                     </Col>
                                 </FormGroup>
 
                                 <FormGroup row>
                                     <Label for="name" sm={2}>Name</Label>
                                     <Col sm={5}>
-                                        <Input disabled type="text" name="name" id="name" placeholder="Name" value={
+                                        <Input disabled={!this.state.isNewEmployee} type="text" name="name" id="name" placeholder="Name" value={
                                             this.state.name
+                                        } onChange={
+                                            this.handleChange.bind(this, "name")
                                         } />
                                     </Col>
                                 </FormGroup>
 
-                                 <FormGroup row>
-                                    <Label for="address" sm={2}>Address</Label>
+
+                                <FormGroup row>
+                                    <Label for="age" sm={2}>Age</Label>
                                     <Col sm={5}>
-                                        <Input disabled type="textarea" name="name" id="address" placeholder="Address" value={
-                                            this.state.address
+                                        <Input disabled={!this.state.isNewEmployee} type="text" name="age" id="age" placeholder="Age" value={
+                                            this.state.age
+                                        } onChange={
+                                            this.handleChange.bind(this, "age")
                                         } />
                                     </Col>
                                 </FormGroup>
+
+
+                                <FormGroup row>
+                                    <Label for="address" sm={2}>Address</Label>
+                                    <Col sm={5}>
+                                        <Input disabled={!this.state.isNewEmployee} type="textarea" name="address" id="address" placeholder="Address"
+                                         value={
+                                            this.state.address
+                                        } onChange={
+                                            this.handleChange.bind(this, "address")
+                                        } />
+                                    </Col>
+                                </FormGroup>
+
+                                {partial}
                             </Form>
+
+
                         </div>
 
                     </div>
 
 
                     <div>
-                        <h4> Employment History </h4> 
+                        <h4> Employment History </h4>
                         <Button className="btn btn-info float-right" onClick={() => this.addEmpHistory()}>Save Employment History</Button>
 
 
