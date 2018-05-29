@@ -9,7 +9,9 @@ import './css/oswald.css'
 import './css/open-sans.css'
 import './css/pure-min.css'
 import './App.css'
+import AppNavBar from './components/nav_bar'
 
+import EmployeeSearch from './components/employee_search'
 
 
 class App extends Component {
@@ -222,164 +224,13 @@ class App extends Component {
   }
 
   render() {
-      return ( <
-          div className = "App" >
-          <
-          nav className = "navbar pure-menu pure-menu-horizontal" >
-          <
-          a href = "#"
-          className = "pure-menu-heading pure-menu-link" > Truffle Box < /a> <
-          /nav>
+      return (
+        <div>
+          <AppNavBar/>
+          <EmployeeSearch />
+          </div>
 
-          <
-          main className = "container" >
-          <
-          div className = "pure-g" >
-          <
-          div className = "pure-u-1-1" >
-          <
-          h1 > Employee Background Verification! < /h1> <
-          p > Technology used: Ganache, Truffle, Web3js, Reactjs < /p> <
-          h2 > Smart Contract Example to do Following: < /h2> <
-            p > Search Employee and Add Employee. < /p> <
-            p > Employment Background < /p> <
-            p > Educational Background < /p> <
-            p > Criminal Background < /p>
-
-            <
-            p > Total number of Employees in the Ledger: < strong > {
-              this.state.employeeCount
-            } < /strong></p >
-            <
-            form >
-            Search Employee: < input type = "text"
-          value = {
-            this.state.searchEmpId
-          }
-          onChange = {
-            this.handleChange.bind(this, "searchEmpId")
-          }
-          />
-
-          {
-            " "
-          } <
-          input type = "button"
-          onClick = {
-            this.searchEmployee.bind(this)
-          }
-          value = "Search" / >
-          <
-          br / >
-          <
-          br / >
-          <
-          div >
-          emp id: < input type = "text"
-          value = {
-            this.state.empId
-          }
-          onChange = {
-            this.handleChange.bind(this, "empid")
-          }
-          />{" "}
-          Name: < input type = "text"
-          value = {
-            this.state.name
-          }
-          onChange = {
-            this.handleChange.bind(this, "name")
-          }
-          />{" "}
-          Age: < input type = "number"
-          value = {
-            this.state.age
-          }
-          onChange = {
-            this.handleChange.bind(this, "age")
-          }
-          /> <
-          /div> <
-          br / >
-          Address: < textarea value = {
-            this.state.address
-          }
-          onChange = {
-            this.handleChange.bind(this, "address")
-          }
-          /> <
-          br / >
-          <
-          br / > {
-            this.state.employementHistory.map((emp, i) => {
-                return <div >
-
-
-                  Employer name: < input type = "text"
-                value = {
-                  emp.employerName
-                }
-                onChange = {
-                  this.handleChange.bind(this, "emp.employerName")
-                }
-                />{" "}
-                From: < input type = "text"
-                value = {
-                  emp.from
-                }
-                onChange = {
-                  this.handleChange.bind(this, "emp.from")
-                }
-                />{" "}
-                To: < input type = "text"
-                value = {
-                  emp.to
-                }
-                onChange = {
-                  this.handleChange.bind(this, "emp.to")
-                }
-                />{" "} <
-                br / >
-                  <
-                  br / >
-                  <
-                  /div> } )} <
-                  input type = "button"
-                onClick = {
-                  this.addEmp.bind(this)
-                }
-                value = "AddEmployee" / > {
-                    " "
-                  } <
-                  input type = "button"
-                onClick = {
-                  this.addEmpHistory
-                }
-                value = "Employment Background" / > {
-                    " "
-                  } <
-                  input type = "button"
-                value = "Educational Background" / > {
-                    " "
-                  } {
-                    " "
-                  } <
-                  input type = "button"
-                onClick = {
-                  this.addEmpHistory
-                }
-                value = "Criminal Background" / > {
-                    " "
-                  } <
-                  button > Cancel < /button> <
-                  /form>
-
-                  <
-                  /div> <
-                  /div> <
-                  /main> <
-                  /div>
-              );
+       );
             }
           }
 
